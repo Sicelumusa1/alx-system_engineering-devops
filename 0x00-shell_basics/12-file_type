@@ -1,2 +1,2 @@
 #!/bin/bash
-stat -c "%F" iamafile
+stat iamafile
