@@ -1,0 +1,2 @@
+#!/bin/bash
+cd | ls | head -n 10  /etc/passwd
