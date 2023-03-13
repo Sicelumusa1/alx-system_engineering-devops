@@ -1,2 +1,2 @@
 #!/bin/bash
-ls | less /etc/passwd; less /etc/hosts
+cd | pr -m -t /etc/passwd /etc/hosts
