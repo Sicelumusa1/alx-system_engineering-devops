@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -n 1 iacta >> iacta_1
+last_line=tail -n 1 iacta >> iacta_1
