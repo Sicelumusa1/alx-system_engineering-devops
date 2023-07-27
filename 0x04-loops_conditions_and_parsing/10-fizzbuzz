@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#Prints FizzBuzz for every multiple of 3 and 5
+#Prints Fizz for every multiple of 3
+#Prints Buzz for every multiple of 5
+#Prints the number itself if it is not part of the above
+num=1
+while [ $num -le 100 ]
+do
+    if (( num % 3 == 0 ))
+    then
+        if (( num % 15 == 0 ))
+        then
+            echo "FizzBuzz"
+	else
+            echo "Fizz"
+	fi
+    elif (( num % 5 == 0 ))
+    then
+        echo "Buzz"
+    else
+        echo "$num"
+    fi    
+    (( num = num + 1 ))
+done
+    
