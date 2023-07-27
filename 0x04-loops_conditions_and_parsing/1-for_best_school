@@ -2,5 +2,5 @@
 #prints the phrase Best school 10 times using the for loop
 for _ in {1..10}
 do
-	echo "Best Shool"
+	echo "Best School"
 done
