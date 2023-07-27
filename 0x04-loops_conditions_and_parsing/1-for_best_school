@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#prints the phrase Best school 10 times using the for loop
+for n in {1..10}
+do
+	echo "Best Shool"
+done
