@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#Displays the contents of the current directory in a list format
+for file in *
+do
+    if [ ! -f "$file" ] || [ "${file:0:1}" = "." ]
+    then
+        continue
+    fi
+
+    dash_sufix="${file#*-}"
+
+    if [ "$dash_sufix" != "$file" ]
+    then
+        echo "$dash_sufix"
+    else
+        echo "$file"
+    fi
+done
