@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#Prints numbers from 1 to 20. After No. 4 prints bad luck from China
+#after No. 9 prints bad luck from Japan
+#after No. 17 prinys bad luck from Italy
+num=1
+while [ $num -le 20 ]
+do
+    case $num in
+        4)
+            echo "$num"
+            echo "bad luck from China"
+            ;;
+        9)
+            echo "$num"
+            echo "bad luck from Japan"
+            ;;
+        17)
+            echo "$num"
+            echo "bad luck from Italy"
+            ;;
+         *)
+            echo "$num"
+            ;;
+    esac
+    (( num = num + 1 ))
+done
