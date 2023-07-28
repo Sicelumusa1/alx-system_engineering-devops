@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#stops 4-to_infinity_and_beyond process
+pids=$(pgrep -f "4-to_infinity_and_beyond")
+
+if [ -z "$pids" ]
+then
+    exit 1
+fi
+
+echo "$pids" | xargs kill
