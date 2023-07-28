@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+#creates /var/run/myscript.pid, Displays To infinity and beyond indefinitely
+#Displays I hate the kill command when receiving a SIGTERM signal
+#Displays Y U no love me?! when receiving a SIGINT signal
+#Deletes the file /var/run/myscript.pid and terminates itself
+
+term_handler() {
+echo "I hate the kill command"
+quit_handler
+}
+
+int_handler() {
+echo "Y U no love me?!"
+}
+
+quit_handler() {
+rm -f /var/run/myscript.pid
+#Terminate
+exit 0
+}
+
+#set signal handlers
+trap 'term_handler SIGTERM' SIGTERM
+trap 'int_handler SIGINT' SIGINT
+trap 'quit_handler SIGQUIT' SIGQUIT
+
+#save the PID to the file
+echo $$ > /var/run/myscript.pid
+
+#Infinite loop
+while true
+do
+    echo "To infinity and beyond"
+    sleep 2
+done
