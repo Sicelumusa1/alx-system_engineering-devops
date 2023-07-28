@@ -2,4 +2,3 @@
 #stops a script that runs/loops indefinitely
 #Get pid of the background process
 pkill -9 -f "7-highlander"
-echo "killed"
