@@ -127,4 +127,18 @@ Displays FizzBuzz when the number is a multiple of 3 and 5
 Displays Fizz when the number is multiple of 3
 Displays Buzz when the number is a multiple of 5
 Otherwise, displays the number
-In a list forma
+In a list format
+
+11. Read and cut
+help: read
+
+Write a Bash script that displays the content of the file /etc/passwd.
+
+Your script should only display:
+
+username
+user id
+Home directory path for the user
+Requirements:
+
+You must use the while loop (for and until are forbidden)
