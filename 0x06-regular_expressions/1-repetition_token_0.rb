@@ -1,16 +1,11 @@
 #!/usr/bin/env ruby
 def school_match(string)
-    patten = /hbt*n/
+    match_found = string.scan(/hbt*n/)
 
-    match_found = string.match(patten)
-
-    if match_found
-      puts match_found[0]
+    if match_found.any?
+      puts match_found.join("\n")
     else
       puts ""
     end
 end
-
-input = ARGV[0]
-
-school_match(input)
+school_match(ARGV[0])
