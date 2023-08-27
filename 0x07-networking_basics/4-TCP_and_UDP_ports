@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#Displays listening ports
+#only shows listening sockets, PId and name of the progran
+#to which each socket belongs
+lsof -i -P -n | grep LISTEN
