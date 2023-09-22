@@ -1,5 +1,4 @@
-#  Create a file in /tmp with 0744 permissions, www-data as owner and group
-#  and contents 'I love Puppet'
+#  Create a file in /tmp with 0744 permissions, www-data as owner and group and contents 'I love Puppet'
 
 file { '/tmp/school': 
   ensure  => 'file',
