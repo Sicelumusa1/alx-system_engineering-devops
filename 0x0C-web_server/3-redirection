@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#  Configure your Nginx server so that /redirect_me is redirecting to another page
+#  Update the package list and install Nginx
+sudo apt-get update
+
+if ! dpkg -l | grep -q nginx; then  
+    sudo apt-get install -y nginx
+fi
+
+#  Create an Nginx configuration file for the redirection
+echo "
+server {
+    listen 80;
+    server_name_;
+
+    location /redirect_me {
+        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+    }
+}" | sudo tee /etc/nginx/sites-available/redirect > /dev/null
+
+#  Create a symbolic link to enable the new site configuration
+sudo  ln -s /etc/nginx/sites-available/redirect /etc/nginx/sites-enabled/
+
+#  remove the default Nginx configuration
+sudo rm -f /etc/nginx/site-enabled/default
+
+#  Test the Nginx configuration
+sudo nginx -t
+
+#  Gracefully reload Nginx
+sudo nginx -s reload

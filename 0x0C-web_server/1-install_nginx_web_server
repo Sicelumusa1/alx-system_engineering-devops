@@ -1,24 +1,26 @@
 #!/usr/bin/env bash
 #  Install nginx on your web-01 server Nginx should be listening on port 80
 #  Update the package list and install Nginx
-apt-get update -y
-apt-get install -y nginx
+sudo apt-get update
 
-#  Create a custon Nginx configuration file
-echo "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+if ! dpkg -l | grep -q nginx; then
+    sudo apt-get install -y nginx
+fi
 
-    root /var/www/html;
-    index index.html;
+#  Create an HTML file with "Hello World" content
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
 
-    location / {
-        echo 'Hello World!';
-    }
-}" > /etc/nginx/sites-available/default
+#  Nginx configuration file to listen to port 80 and serve the default site
+sudo sed -i 's/default_server//g' /etc/nginx/sites-available/default
+
+#  Find the Nginx master process ID
+nginx_master_pid=$(ps aux | grep '[n]ginx: master process' | awk '{print $2}')
+
+#  Gracefully stop Nginx
+sudo kill -QUIT "$nginx_master_pid"
 
 #  Reload Nginx to apply the new configuration
-service nginx reload
+sudo nginx
 
-#  Clean up
-apt-get clean
+#  Cleanly exit the script
+exit 0
