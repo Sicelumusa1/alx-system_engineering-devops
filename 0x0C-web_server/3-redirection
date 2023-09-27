@@ -11,7 +11,7 @@ fi
 echo "
 server {
     listen 80;
-    server_name_;
+    server_name _;
 
     location /redirect_me {
         return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
@@ -22,7 +22,7 @@ server {
 sudo  ln -s /etc/nginx/sites-available/redirect /etc/nginx/sites-enabled/
 
 #  remove the default Nginx configuration
-sudo rm -f /etc/nginx/site-enabled/default
+sudo rm -f /etc/nginx/sites-enabled/default
 
 #  Test the Nginx configuration
 sudo nginx -t
