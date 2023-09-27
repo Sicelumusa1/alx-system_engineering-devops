@@ -1,5 +1,5 @@
-Host 34.232.65.154
-    HostName 34.232.65.154
+Host 34.224.95.50
+    HostName 34.224.95.50
     User ubuntu
     IdentityFile ~/.ssh/school
     PasswordAuthentication no
