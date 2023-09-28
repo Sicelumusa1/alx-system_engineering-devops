@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# This script automates the process of setting up an HTTPD container
+# with a custom index.html file and testing it with a curl
+
+# Pull the httpd docker image
+docker pull httpd
+
+# Run an httpd container, mapping port 8080 to port 80
+doceker run -p 8080:80 -d httpd
+
+# Display the running containers and note the CONTAINER ID of the "httpd" container
+docker ps
+
+# Prompt the user to enter the CONTAINER ID
+read -p "Enter the CONTAINER ID of the
+'httpd' container" CONTAINER_ID
+
+# Execute a bash shell in the container
+docker exec -it "$CONTAINER_ID" bash
+
+# Change the directory to the HTTPD document root
+cd /usr/local/apache2/htdocs
+
+# Create or overwrite the index.html file with "Hello Holberton" content
+echo "Hello Holberton" > index.html
+
+# Exit the container's bash shell
+exit
+
+# Test the HTTPD server using curl
+curl http://localhost:8080
