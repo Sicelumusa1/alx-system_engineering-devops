@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Adds a custom Nginx response header,to be able to track which web server is answering our HTTP requests.
+
+#  Install Nginx if not already installed
+if ! dpkg -l | grep -q nginx; then
+    sudo apt-get update
+    sudo apt-get install -y nginx
+fi
+
+#  Create a custom Nginx configuration file
+echo "server {
+    listen 80;
+    listen [::]:80;
+
+    location / {
+        add_header X-Served-By \$hostname;
+        root /var/www/html;
+        index index.html;
+    }
+}" | sudo tee /etc/nginx/sites-available/custom_header > /dev/null
+
+#  Enable the custom Nginx configuration
+sudo ln -s /etc/nginx/sites-available/custom_header /etc/nginx/sites-enabled/
+
+#  Remove default Nginx confuguration
+sudo rm /etc/nginx/sites-enabled/default
+
+#  Test Nginx configuration
+sudo nginx -t
+
+#  Reload Nginx to apply the new configuration
+sudo service nginx reload
+
+#  Exit the script
+exit 0
