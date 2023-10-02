@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+# configures a new Ubuntu machine to Configure HAproxy so that it send traffic to web-01 and web-02
 
 #  Install HAProxy
 sudo apt-get update
