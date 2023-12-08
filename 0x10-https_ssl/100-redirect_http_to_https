@@ -36,7 +36,8 @@ defaults
 frontend http-in
     bind *:80
     mode http
-    redirect scheme https if !{ ssl_fc }
+    acl is_http hdr(Host) -i gabuza.tech
+    redirect scheme https code 301 if is_http
 
 frontend https-in
     bind *:443 ssl crt /etc/letsencrypt/live/gabuza.tech/combined.pem
