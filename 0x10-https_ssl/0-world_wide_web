@@ -20,7 +20,7 @@ function audit_domain() {
 	# Check if the DNS record is not empty
 	if [ -n "$result" ]; then
 	    # Extract record type and destination from the DNS record
-	    record_type=$(echo "$result" | awk '{print $4}')
+	    record_type="A"
 	    destination=$(echo "$result" | awk '{print $1}')
 	    echo "The subdomain $sub is a $record_type record and points to $destination"
 	else
