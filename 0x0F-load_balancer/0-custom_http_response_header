@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Adds a custom Nginx response header,to be able to track which web server is answering our HTTP requests.
 
 #  Install Nginx if not already installed
