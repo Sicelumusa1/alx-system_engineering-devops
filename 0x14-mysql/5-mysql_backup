@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# Generates a MySQL dump and creates a compressed archive out of it
+
+# Check if the coreect number of arguments is provided
+if [ "$#" -ne 1 ]; then
+  echo "Usage: $0 <mysql_root_password>"
+  exit 1
+fi
+
+
+#MySQL root password
+mysql_password="$1"
+
+
+# Output directory
+backup_dir=".ssh"
+
+# Archive file name format: day-month-year.tar.gz
+archive_file="$(date +'%d-%m-%Y').tar.gz"
+
+
+# Create a MySL dump of all databases
+mysqldump -u root -p"${mysql_password}" --all-databases > "${backup_dir}/backup.sql"
+
+# Create a compressed archive
+tar -czf "${backup_dir}/${archive_file}" -C "${backup_dir}" backup.sql
+
+# Clean up the dump file
+rm "${backup_dir}/backup.sql"
