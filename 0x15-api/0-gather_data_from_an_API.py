@@ -1,9 +1,7 @@
 #!/usr/bin/python3
-
+"""Gethers information about the employees' TODO list progress"""
 import requests
 import sys
-
-"""Gethers information about the employees' TODO list progress"""
 
 
 def get_user_name(user_id):
