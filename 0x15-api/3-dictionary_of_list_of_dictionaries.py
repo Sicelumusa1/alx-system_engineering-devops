@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+"""Gethers information about the employees' TODO list progress"""
 
 import json
 import requests
+
 
 def get_users():
     """
@@ -13,6 +15,7 @@ def get_users():
     url = f"https://jsonplaceholder.typicode.com/users"
     response = requests.get(url)
     return response.json()
+
 
 def get_user_name(user_id, users):
     """
@@ -30,6 +33,7 @@ def get_user_name(user_id, users):
             return user["username"]
     return None
 
+
 def export_to_json(todo_data):
     """
     Exports the employee's TODO list data to a JSON file
@@ -43,7 +47,8 @@ def export_to_json(todo_data):
     filename_json = "todo_all_employees.json"
 
     with open(filename_json, mode='w') as json_file:
-        json.dump(todo_data, json_file, separators=(', ',': '))
+        json.dump(todo_data, json_file, separators=(', ', ': '))
+
 
 def gether_todo_data(users):
     """
@@ -56,7 +61,7 @@ def gether_todo_data(users):
 
     for user in users:
         user_id = user["id"]
-        url =  f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
+        url = f"https://jsonplaceholder.typicode.com/todos?userId={user_id}"
         response = requests.get(url)
         todos = response.json()
 
@@ -67,6 +72,7 @@ def gether_todo_data(users):
             all_todo_data[str(user_id)] = todo_data
 
         return all_todo_data
+
 
 if __name__ == "__main__":
     users = get_users()

@@ -20,6 +20,7 @@ def get_user_name(user_id):
 
     return user_data.get("name", None)
 
+
 def employee_todo_progess(employee_id):
     """
     Gethers information about the employees' TODO list progress

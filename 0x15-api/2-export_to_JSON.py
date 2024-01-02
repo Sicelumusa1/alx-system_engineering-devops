@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Gethers information about the employees' TODO list progress"""
 
 import json
 import requests
@@ -23,6 +24,7 @@ def get_user_name(user_id):
 
     return user_data.get("username", None)
 
+
 def export_to_json(employee_id, todos):
     """
     Exports the employee's TODO list data to a JSON file
@@ -39,7 +41,7 @@ def export_to_json(employee_id, todos):
 
     tasks_json = [{"task": todo["title"], "completed": todo["completed"],
                    "username": employee_name} for todo in todos]
-    user_tasks = { str(employee_id): tasks_json }
+    user_tasks = {str(employee_id): tasks_json}
 
     with open(filename_json, mode='w') as json_file:
         json.dump(user_tasks, json_file, separators=(', ', ': '))
@@ -62,6 +64,7 @@ def employee_todo_progess(employee_id):
 
     if todos:
         export_to_json(employee_id, todos)
+
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
