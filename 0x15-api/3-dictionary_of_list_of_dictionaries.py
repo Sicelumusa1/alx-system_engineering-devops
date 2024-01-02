@@ -71,7 +71,7 @@ def gether_todo_data(users):
                           "completed": todo["completed"]} for todo in todos]
             all_todo_data[str(user_id)] = todo_data
 
-        return all_todo_data
+    return all_todo_data
 
 
 if __name__ == "__main__":
