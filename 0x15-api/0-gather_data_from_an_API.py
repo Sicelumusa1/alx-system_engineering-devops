@@ -44,9 +44,13 @@ def employee_todo_progess(employee_id):
         print(f"Employee {employee_name} is done with tasks "
               f"({num_completed_todos}/{num_total_todos}):")
         for todo in completed_todos:
-            print(f"\t{todo['title']}")
+            print(f"\t {todo['title']}")
 
 
 if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python3 script.py <employee_id>")
+        sys.exit(1)
+
     employee_id = int(sys.argv[1])
     employee_todo_progess(employee_id)
