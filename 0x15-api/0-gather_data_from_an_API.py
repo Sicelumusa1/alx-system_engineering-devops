@@ -38,7 +38,7 @@ def employee_todo_progess(employee_id):
 
     if todos:
         completed_todos = [todo for todo in todos if todo["completed"]]
-        employee_name = get_user_name(employee_id
+        employee_name = get_user_name(employee_id)
         num_completed_todos = len(completed_todos)
         num_total_todos = len(todos)
         print(f"Employee {employee_name} is done with tasks "
