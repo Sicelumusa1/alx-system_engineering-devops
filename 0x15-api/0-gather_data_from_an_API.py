@@ -38,13 +38,14 @@ def employee_todo_progess(employee_id):
 
     if todos:
         completed_todos = [todo for todo in todos if todo["completed"]]
-        employee_name = get_user_name(todos[0]["userId"])
+        employee_name = get_user_name(employee_id
         num_completed_todos = len(completed_todos)
         num_total_todos = len(todos)
         print(f"Employee {employee_name} is done with tasks "
               f"({num_completed_todos}/{num_total_todos}):")
         for todo in completed_todos:
             print(f"\t{todo['title']}")
+
 
 if __name__ == "__main__":
     employee_id = int(sys.argv[1])
