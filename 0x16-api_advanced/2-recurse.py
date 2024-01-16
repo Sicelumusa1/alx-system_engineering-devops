@@ -16,15 +16,17 @@ def recurse(subreddit, hot_list=[]):
     Args:
         subreddit (str): The name of the subreddit to query.
         hot_list (list): The list of hot articles to append to.
-        after (str): the ID of the last post in the previous page 
+        after (str): the ID of the last post in the previous page
         of results
 
     Returns:
-    list: The list of hot articles for the given subreddit. Returns None
-    it the subreddit is invald or the request fails.
+        list: The list of hot articles for the given subreddit. Returns None
+        it the subreddit is invald or the request fails.
     """
     url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=100"
-    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKid/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+               "AppleWebKid/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 "
+               "Safari/537.36"}
     params = {"after": after} if after else {}
     response = requests.get(url, headers=headers, params=params)
 
